@@ -1,0 +1,55 @@
+//  ------------------------------------------------------------------------ //
+//                XBS Code Data Management for Xoops CMS                     //
+//                    Copyright (c) 2005 A Kitson                            //
+//                       <http://xoobs.net/>                                 //
+//  ------------------------------------------------------------------------ //
+//  This program and data is free software; you can redistribute it and/or   //
+//  modify it under the terms of the GNU General Public License as published //
+//  by the Free Software Foundation; either version 2 of the License, or     //
+//  (at your option) any later version.                                      //
+//                                                                           //
+//  You may not change or alter any portion of this comment or credits       //
+//  of supporting developers from this source code or any supporting         //
+//  source code which is considered copyrighted (c) material of the          //
+//  original comment or credit authors.                                      //
+//                                                                           //
+//  This program and data is distributed in the hope that it will be         //
+//  useful but WITHOUT ANY WARRANTY; without even the implied warranty of    //
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            //
+//  GNU General Public License for more details.                             //
+//                                                                           //
+//  You should have received a copy of the GNU General Public License        //
+//  along with this program; if not, write to the Free Software              //
+//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
+//  or visit http://www.gnu.org/copyleft/gpl.html                            //
+
+Data Description
+----------------
+
+Data short name:	EU VAT
+Data full name:		European Union Valued Added Tax Codes and formats
+CDM CodeSet name:	EUVAT
+Language Set:		EN (English Base)
+Publisher:		Ashley Kitson
+Version:		1
+Publication Date:	25/02/2006
+Datafile name:		xbs_vat_codedata.sql
+Support URL:		http:/xoops.net
+Additional Information:	http://europa.eu.int/comm/taxation_customs/vies/en/vieshome.htm
+
+Data Contents
+-------------
+
+Code Length: 		Char(2)
+Code Contents:		EU VAT Country Code for member state.  As of time of
+			publication, only the code for Greece differs from the
+			ISO code for the country
+
+Code Value Length: 	Char(2)
+Code Value Contents:	ISO Country Code for EU member state
+
+Code Description:	English name for member state
+
+Code Parameters:	Regexp pattern to validate VAT number format against.
+			Some countries have more than one pattern.
+Code Param separator:	~
