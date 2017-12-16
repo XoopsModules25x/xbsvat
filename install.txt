@@ -1,0 +1,13 @@
+You must install the XBS Code Data management module (CDM) prior to installing EUVAT. 
+You can find this at http://xoobs.net
+
+Install the EUVAT module as per any normal Xoops module. 
+Copy files into modules/xbs_vat directory.
+Install via the Xoops module administration screen.
+
+For additional help and instructions on using EUVAT, point your browser at 
+the docs/index.html file for the systems documentation pages.
+
+NB
+******
+If you are installing this module on Xoops V2.2.x then don't forget to set the module order to 0 (zero) in modules admin to prevent a menu option appearing on the user side menu.  This is part of a workaround for Xoops 2.2.

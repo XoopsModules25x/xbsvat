@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="en-US"><sect1><title>XBS EU VAT Xoops Module Help</title>
+<para>(c) A Kitson &lt;<ulink url="http://xoobs.net/">http://xoobs.net</ulink>&gt;, UK, 2005</para><sect2><title>Installation</title>
+<para>----------------------</para>
+<para>You must install the XBS Code Data management module (CDM) prior to installing EUVAT. You can find this at <ulink url="http://xoobs.net/">http://xoobs.net</ulink> </para>
+<para>Install the EUVAT module as per any normal Xoops module. Copy files into modules/xbs_vat directory and install via the Xoops module administration screen.</para>
+<para>If you are installing this module on Xoops V2.2.x then set the module order to 0 (zero) in modules admin to prevent a menu option appearing on the user side menu.  This is part of a workaround for Xoops 2.2.</para></sect2>
+<sect2><title>What EUVAT provides</title>
+<para>-------------------------------------------</para>
+<para>EUVAT does not provide any main page, menu or admin menu. It provides one block for allowing a user to check a VAT number on the VIES database. This is configured in the normal way via the Xoops block administration facilities.</para>
+<para>The block is included as a facility for your users and also to demonstrate how to use EUVAT in your own module. Check out the euvat_block_lookup.php and vatlookup.php scripts to be found in the xbs_vat/blocks directory.</para>
+<para>This documentation gives details on the public interface to EUVAT for developers.</para><sect3><title>Using EUVAT in your own code</title>
+<para>------------------------------------------------------------</para>
+<para>The following construct should be enough to demonstrate the use of the EUVAT system in your own code:</para>
+<para>include_once(XOOPS_ROOT_PATH.”/modules/xbs_vat/include/functions.php”);</para>
+<para>$vcntry = 'GB';</para>
+<para>$vnum = '876500706';</para>
+<para>$test = EUVATCheckNumber($vcntry, $vnum);</para>
+<para>//Do something on basis of $test which will be True or False</para>
+<para>EUVAT relies on the default language setting (EN – English Base) of the CDM module to find its codes in the CDM system. If you have installed CDM without changing the default language, EUVAT should work. If you change the default language, you will have to generate a set of codes for EUVAT in the CDM system for your chosen language.</para></sect3><sect3><title>Getting help and reporting bugs</title>
+<para>----------------------------------------------------------------</para>
+<para>The code for this module is maintained via <ulink url="http://xoobs.net/">the Xoobs.net website</ulink>
+<ulink url="http://dev.xoops.org/"> </ulink>facility. Use the facilities there to report and track bugs, get latest downloads and request support. </para></sect3><sect3><title>Licensing</title>
+<para>------------------</para>
+<para>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version. </para>
+<para>You may not change or alter any portion of this comment or credits of supporting developers from this source code or any supporting source code which is considered copyrighted (c) material of the original comment or credit authors. </para>
+<para>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. </para>
+<para>You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA or see <ulink url="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</ulink>
+</para>
+<para/></sect3></sect2></sect1></article>
