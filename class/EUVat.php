@@ -2,7 +2,7 @@
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //
-//                       <http://www.xoops.org/>                             //
+//                       <https://xoops.org/>                             //
 //  ------------------------------------------------------------------------ //
 //  This program is free software; you can redistribute it and/or modify     //
 //  it under the terms of the GNU General Public License as published by     //
@@ -25,58 +25,59 @@
 //  ------------------------------------------------------------------------ //
 // Author:    Ashley Kitson                                                  //
 // Copyright: (c) 2004, Ashley Kitson
-// URL:       http://xoobs.net			                                     //
-// Project:   The XOOPS Project (http://www.xoops.org/)                      //
+// URL:       http://xoobs.net                                               //
+// Project:   The XOOPS Project (https://xoops.org/)                      //
 // Module:    EU VAT (EUVAT)                                                 //
 // ------------------------------------------------------------------------- //
 /**
- * @package EUVAT
- * @subpackage EUVat
- * @author Ashley Kitson http://xoobs.net
+ * @package       EUVAT
+ * @subpackage    EUVat
+ * @author        Ashley Kitson http://xoobs.net
  * @copyright (c) 2004 Ashley Kitson, Great Britain
-*/
+ */
 
-if (!defined('XOOPS_ROOT_PATH')) { 
-  exit('Call to include EUVat.php failed as XOOPS_ROOT_PATH not defined');
+if (!defined('XOOPS_ROOT_PATH')) {
+    exit('Call to include EUVat.php failed as XOOPS_ROOT_PATH not defined');
 }
 
 /**
-* EUVat Base Class
-*/
-require_once XOOPS_ROOT_PATH."/modules/xbs_vat/class/class.vat.base.php";
+ * EUVat Base Class
+ */
+require_once XOOPS_ROOT_PATH . '/modules/xbs_vat/class/class.vat.base.php';
 /**
  * CDM CodeHandler class
  */
-require_once XOOPS_ROOT_PATH."/modules/xbs_cdm/class/CDMCode.php";
+require_once XOOPS_ROOT_PATH . '/modules/xbs_cdm/class/CDMCode.php';
 
 /**
  * Object handler for EUVat
  *
- * @package EUVAT
+ * @package    EUVAT
  * @subpackage EUVat
  */
-class Xbs_vatEUVatHandler extends Xbs_CdmCDMCodeHandler {
+class Xbs_vatEUVatHandler extends Xbs_CdmCDMCodeHandler
+{
 
-	/**
-	* Constructor
-	*
-	* @param xoopsDb &$db Handle to database object
-	*/
-  function Xbs_vatEUVatHandler(&$db) {
-    $this->Xbs_CdmCDMCodeHandler($db); //call ancestor constructor
-    $this->classname = 'euvat';
-    $this->ins_tagname='uevat_ins_code';
-  }
+    /**
+     * Constructor
+     *
+     * @param xoopsDb &$db Handle to database object
+     */
+    public function __construct($db)
+    {
+        parent::__construct($db); //call ancestor constructor
+        $this->classname   = 'euvat';
+        $this->ins_tagname = 'uevat_ins_code';
+    }
 
-  /**
-  * Create a new EUVat object
-  *
-  * @access private
-  */
-  function &_create() {
-    $obj = new EUVat();
-    return $obj;
-  }//end function _create
-
+    /**
+     * Create a new EUVat object
+     *
+     * @access private
+     */
+    public function &_create()
+    {
+        $obj = new EUVat();
+        return $obj;
+    }//end function _create
 } //end class CDMCodeHandler
-?>

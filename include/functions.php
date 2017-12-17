@@ -2,7 +2,7 @@
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //
-//                       <http://www.xoops.org/>                             //
+//                       <https://xoops.org/>                             //
 //  ------------------------------------------------------------------------ //
 //  This program is free software; you can redistribute it and/or modify     //
 //  it under the terms of the GNU General Public License as published by     //
@@ -25,54 +25,57 @@
 //  ------------------------------------------------------------------------ //
 // Author:    Ashley Kitson                                                  //
 // Copyright: (c) 2004, Ashley Kitson                                        //
-// URL:       http://xoobs.net			                                     //
-// Project:   The XOOPS Project (http://www.xoops.org/)                      //
+// URL:       http://xoobs.net                                               //
+// Project:   The XOOPS Project (https://xoops.org/)                      //
 // Module:    EU VAT (EUVAT)                                                 //
 // SubModule: Common functions                                               //
 // ------------------------------------------------------------------------- //
 
 /**
  * API Functions
- * 
- * @package EUVAT
- * @subpackage API_Functions
- * @author Ashley Kitson http://xoobs.net
+ *
+ * @package       EUVAT
+ * @subpackage    API_Functions
+ * @author        Ashley Kitson http://xoobs.net
  * @copyright (c) 2006 Ashley Kitson, Great Britain
-*/
+ */
 
 /**
  * VAT base class
  */
-include_once(XOOPS_ROOT_PATH.'/modules/xbs_vat/class/class.vat.base.php');
+include_once XOOPS_ROOT_PATH . '/modules/xbs_vat/class/class.vat.base.php';
 
 /**
  * Return an EUVAT object
  *
  * @param string $cntryCd EU VAT Country code
- * @param string $lang Language set for code set
+ * @param string $lang    Language set for code set
  * @return EUVAT (CDMCode) object
  */
-function EUVATGetCodeObj($cntryCd, $lang=CDM_DEF_LANG) {
-	$vatHandler =& xoops_getmodulehandler('EUVat','xbs_vat');
-	$id = $vatHandler->getKey($cntryCd,'EUVAT',$lang);
-	$vat =& $vatHandler->get($id);
-	return $vat;
+function EUVATGetCodeObj($cntryCd, $lang = CDM_DEF_LANG)
+{
+    $vatHandler = xoops_getModuleHandler('EUVat', 'xbs_vat');
+    $id         = $vatHandler->getKey($cntryCd, 'EUVAT', $lang);
+    $vat        =& $vatHandler->get($id);
+    return $vat;
 }
 
 /**
  * Check a VAT number against VIES database
  *
- * @param string $CntryCd  VAT Country Code
- * @param string $vnum  VAT Number (no country code prefix)
- * @param string $lang  Language set to use [optional]
+ * @param        $cntryCd
+ * @param string $vnum VAT Number (no country code prefix)
+ * @param string $lang Language set to use [optional]
+ *
+ * @internal param string $CntryCd VAT Country Code
  * @return boolean True if Code is valid else false
  */
-function EUVATCheckNumber($cntryCd, $vnum, $lang=CDM_DEF_LANG) {
-	$vat =& EUVATGetCodeObj($cntryCd);
-	if ($vat) {
-		return $vat->check($cntryCd.$vnum);
-	} else {
-		return false;
-	}
+function EUVATCheckNumber($cntryCd, $vnum, $lang = CDM_DEF_LANG)
+{
+    $vat =& EUVATGetCodeObj($cntryCd);
+    if ($vat) {
+        return $vat->check($cntryCd . $vnum);
+    } else {
+        return false;
+    }
 }
-?>

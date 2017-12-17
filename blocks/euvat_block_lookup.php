@@ -2,7 +2,7 @@
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //
-//                       <http://www.xoops.org/>                             //
+//                       <https://xoops.org/>                             //
 //  ------------------------------------------------------------------------ //
 //  This program is free software; you can redistribute it and/or modify     //
 //  it under the terms of the GNU General Public License as published by     //
@@ -26,31 +26,31 @@
 // Author:    Ashley Kitson                                                  //
 // Copyright: (c) 2005, Ashley Kitson
 // URL:       http://xoobs.net                                               //
-// Project:   The XOOPS Project (http://www.xoops.org/)                      //
+// Project:   The XOOPS Project (https://xoops.org/)                      //
 // Module:    EU VAT (EUVAT)                                                 //
 // ------------------------------------------------------------------------- //
 /**
-* Code Lookup Block show and edit functions
-* 
-* @author Ashley Kitson http://xoobs.net
-* @copyright 2005 Ashley Kitson, UK
-* @package EUVAT
-* @subpackage Blocks
-* @version 1
-* @access private
-*/
+ * Code Lookup Block show and edit functions
+ *
+ * @author     Ashley Kitson http://xoobs.net
+ * @copyright  2005 Ashley Kitson, UK
+ * @package    EUVAT
+ * @subpackage Blocks
+ * @version    1
+ * @access     private
+ */
 
 //avoid declaring the functions repeatedly
 //if(defined('EUVAT_BLOOKUP_DEFINED')) return;
 /**
  * Flag to tell script it is already parsed.  If set then script is exited
  */
-define('EUVAT_BLOOKUP_DEFINED',true);
+define('EUVAT_BLOOKUP_DEFINED', true);
 
 /**
  * CDM constant definitions
  */
-include_once(XOOPS_ROOT_PATH."/modules/xbs_cdm/include/defines.php");
+include_once XOOPS_ROOT_PATH . '/modules/xbs_cdm/include/defines.php';
 /**
  * CDM form element class
  */
@@ -58,92 +58,92 @@ include_once(XOOPS_ROOT_PATH."/modules/xbs_cdm/include/defines.php");
 /**
  * EU VAT form elements
  */
-include_once(XOOPS_ROOT_PATH."/modules/xbs_vat/class/class.vat.form.php");
-
+include_once XOOPS_ROOT_PATH . '/modules/xbs_vat/class/class.vat.form.php';
 
 /**
-* Function: Create display data for block 
-*
-* Retrieve block configuration data and format block output
-*
-* @version 1
-* @param array $options block config options
-* 				[0] = Default EU VAT Country Code
-* @return array $block output parameters for smarty template 
-*/
+ * Function: Create display data for block
+ *
+ * Retrieve block configuration data and format block output
+ *
+ * @version 1
+ * @param array $options block config options
+ *                       [0] = Default EU VAT Country Code
+ * @return array $block output parameters for smarty template
+ */
 
-function b_euvat_lookup_show($options) {
-	
-	//see if user has changed the country code
-	// This will happen if form has been used by user
-	global $_SESSION;
-	if (isset($_SESSION['euvat_blookup_cntry'])) {
-		$cntry = $_SESSION['euvat_blookup_cntry'];
-		$vatnum = $_SESSION['euvat_blookup_vatnum'];
-		$msg = $_SESSION['euvat_blookup_msg'];
-	} else {
-		$cntry = $options[0];
-		$vatnum = '';
-		$msg = '';
-	}
-    $block = array();
-	
+function b_euvat_lookup_show($options)
+{
+
+    //see if user has changed the country code
+    // This will happen if form has been used by user
+    global $_SESSION;
+    if (isset($_SESSION['euvat_blookup_cntry'])) {
+        $cntry  = $_SESSION['euvat_blookup_cntry'];
+        $vatnum = $_SESSION['euvat_blookup_vatnum'];
+        $msg    = $_SESSION['euvat_blookup_msg'];
+    } else {
+        $cntry  = $options[0];
+        $vatnum = '';
+        $msg    = '';
+    }
+    $block = [];
+
     //Form action
-	$block['action'] = XOOPS_URL.'/modules/xbs_vat/vatlookup.php';
-	//country code selector
-	$fcntry = new EUVATFormSelectCountry('','cntry',$cntry);
-	$block['cntry'] = $fcntry->render();
-	$block['cntryname'] = _MB_EUVAT_BLOOK_COUNTRY;
-	
-	//VAT number input
-	$fvnum = new XoopsFormText('','vatnum',0,20,$vatnum);
-	$block['vnum'] = $fvnum->render();
-	$block['vnumname'] = _MB_EUVAT_BLOOK_NUMBER;
-	//Message
-	$block['msg'] = $msg;
-	//buttons
-	$submit = new XoopsFormButton("","submit",_MB_EUVAT_BLOOK_SUBMIT,"submit");
-   	$block['submit'] = $submit->render();
-   	$reset = new XoopsFormButton('','reset',_MB_EUVAT_BLOOK_RESET,'reset');
-	$block['reset'] = $reset->render();
-	/*
-   	//set up the javascript for the form
-	$js = 'function showCode() {
-		document.lookup_form.cvalue.value = document.lookup_form.cd.value;
-	}';
-	$block['javascript'] = $js;
-	*/
-	return $block;
+    $block['action'] = XOOPS_URL . '/modules/xbs_vat/vatlookup.php';
+    //country code selector
+    $fcntry             = new EUVATFormSelectCountry('', 'cntry', $cntry);
+    $block['cntry']     = $fcntry->render();
+    $block['cntryname'] = _MB_EUVAT_BLOOK_COUNTRY;
+
+    //VAT number input
+    $fvnum             = new XoopsFormText('', 'vatnum', 0, 20, $vatnum);
+    $block['vnum']     = $fvnum->render();
+    $block['vnumname'] = _MB_EUVAT_BLOOK_NUMBER;
+    //Message
+    $block['msg'] = $msg;
+    //buttons
+    $submit          = new XoopsFormButton('', 'submit', _MB_EUVAT_BLOOK_SUBMIT, 'submit');
+    $block['submit'] = $submit->render();
+    $reset           = new XoopsFormButton('', 'reset', _MB_EUVAT_BLOOK_RESET, 'reset');
+    $block['reset']  = $reset->render();
+    /*
+    //set up the javascript for the form
+    $js = 'function showCode() {
+        document.lookup_form.cvalue.value = document.lookup_form.cd.value;
+    }';
+    $block['javascript'] = $js;
+    */
+    return $block;
 }
 
 /**
-* Function: Create additional data items for block admin edit form
-*
-* Format a mini table for block options to be included in the
-* main block admin edit form.  All data field names must be 'options[]'
-* and declared in the form in the order of the parameter to this function.
-*
-* @version 1
-* @param array $options block config options
-* 				[0] = Default EU VAT Country Code
-* @return array $form Output html for smarty template
-*/
+ * Function: Create additional data items for block admin edit form
+ *
+ * Format a mini table for block options to be included in the
+ * main block admin edit form.  All data field names must be 'options[]'
+ * and declared in the form in the order of the parameter to this function.
+ *
+ * @version 1
+ * @param array $options block config options
+ *                       [0] = Default EU VAT Country Code
+ * @return string $form Output html for smarty template
+ */
 
-function b_euvat_lookup_edit($options) {
-	
-	/*create input fields using XoopsForm objects
-   	* It is clearer to use XoopsForm object->render() to create the form elements
-	* rather than hand coding the html.	
-	*/
-	$s = new EUVATFormSelectCountry('','options[]',$options[0]);
-	$s->setValue($options[0]);
-	$fld = $s->render();
-	unset($s);
-	
-	//construct the table that will be placed into the admin form
-	$form = "<table>";
-	$form .='<tr><td>'._MB_EUVAT_BLOOK_COUNTRY.'</td><td>'.$fld.'</td></tr>';
-	$form .= "</table>";
-	return $form;
+function b_euvat_lookup_edit($options)
+{
+
+    /*create input fields using XoopsForm objects
+    * It is clearer to use XoopsForm object->render() to create the form elements
+    * rather than hand coding the html.
+    */
+    $s = new EUVATFormSelectCountry('', 'options[]', $options[0]);
+    $s->setValue($options[0]);
+    $fld = $s->render();
+    unset($s);
+
+    //construct the table that will be placed into the admin form
+    $form = '<table>';
+    $form .= '<tr><td>' . _MB_EUVAT_BLOOK_COUNTRY . '</td><td>' . $fld . '</td></tr>';
+    $form .= '</table>';
+    return $form;
 }
-?>
