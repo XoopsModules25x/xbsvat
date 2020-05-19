@@ -18,21 +18,20 @@
  * @author       XOOPS Development Team
  * @version      $Id $
  */
-defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
 
-//$path = dirname(dirname(dirname(__DIR__)));
-//require_once $path . '/mainfile.php';
+include dirname(__DIR__) . '/preloads/autoloader.php';
 
-$moduleHandler = xoops_getHandler('module');
-$module        = $moduleHandler->getByDirname(basename(dirname(__DIR__)));
-$pathIcon32    = '../../' . $module->getInfo('icons32');
-xoops_loadLanguage('modinfo', $module->dirname());
+$moduleDirName = basename(dirname(__DIR__));
+$moduleDirNameUpper = mb_strtoupper($moduleDirName);
+/** @var \XoopsModules\Xbsvat\Helper $helper */
+$helper = \XoopsModules\Xbsvat\Helper::getInstance();
+$helper->loadLanguage('common');
+$helper->loadLanguage('feedback');
 
-$pathModuleAdmin = XOOPS_ROOT_PATH . '/' . $module->getInfo('dirmoduleadmin') . '/moduleadmin';
-if (!file_exists($fileinc = $pathModuleAdmin . '/language/' . $GLOBALS['xoopsConfig']['language'] . '/' . 'main.php')) {
-    $fileinc = $pathModuleAdmin . '/language/english/main.php';
+$pathIcon32 = \Xmf\Module\Admin::menuIconPath('');
+if (is_object($helper->getModule())) {
+    $pathModIcon32 = $helper->url($helper->getModule()->getInfo('modicons32'));
 }
-require_once $fileinc;
 
 $adminmenu              = [];
 $i                      = 0;

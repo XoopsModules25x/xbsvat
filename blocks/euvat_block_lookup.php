@@ -51,7 +51,7 @@ define('EUVAT_BLOOKUP_DEFINED', true);
 /**
  * CDM constant definitions
  */
-require_once XOOPS_ROOT_PATH . '/modules/xbs_cdm/include/defines.php';
+require_once XOOPS_ROOT_PATH . '/modules/xbscdm/include/defines.php';
 /**
  * CDM form element class
  */
@@ -59,7 +59,7 @@ require_once XOOPS_ROOT_PATH . '/modules/xbs_cdm/include/defines.php';
 /**
  * EU VAT form elements
  */
-require_once XOOPS_ROOT_PATH . '/modules/xbs_vat/class/class.vat.form.php';
+require_once XOOPS_ROOT_PATH . '/modules/xbsvat/class/class.vat.form.php';
 
 /**
  * Function: Create display data for block
@@ -97,23 +97,23 @@ function b_euvat_lookup_show($options)
 
     //Form action
 
-    $block['action'] = XOOPS_URL . '/modules/xbs_vat/vatlookup.php';
+    $block['action'] = XOOPS_URL . '/modules/xbsvat/vatlookup.php';
 
     //country code selector
 
-    $fcntry = new EUVATFormSelectCountry('', 'cntry', $cntry);
+    $fcntry = new FormSelectCountry('', 'cntry', $cntry);
 
     $block['cntry'] = $fcntry->render();
 
-    $block['cntryname'] = _MB_EUVAT_BLOOK_COUNTRY;
+    $block['cntryname'] = _MB_XBSVAT_BLOOK_COUNTRY;
 
     //VAT number input
 
-    $fvnum = new XoopsFormText('', 'vatnum', 0, 20, $vatnum);
+    $fvnum = new \XoopsFormText('', 'vatnum', 0, 20, $vatnum);
 
     $block['vnum'] = $fvnum->render();
 
-    $block['vnumname'] = _MB_EUVAT_BLOOK_NUMBER;
+    $block['vnumname'] = _MB_XBSVAT_BLOOK_NUMBER;
 
     //Message
 
@@ -121,11 +121,11 @@ function b_euvat_lookup_show($options)
 
     //buttons
 
-    $submit = new XoopsFormButton('', 'submit', _MB_EUVAT_BLOOK_SUBMIT, 'submit');
+    $submit = new \XoopsFormButton('', 'submit', _MB_XBSVAT_BLOOK_SUBMIT, 'submit');
 
     $block['submit'] = $submit->render();
 
-    $reset = new XoopsFormButton('', 'reset', _MB_EUVAT_BLOOK_RESET, 'reset');
+    $reset = new \XoopsFormButton('', 'reset', _MB_XBSVAT_BLOOK_RESET, 'reset');
 
     $block['reset'] = $reset->render();
 
@@ -159,7 +159,7 @@ function b_euvat_lookup_edit($options)
     * rather than hand coding the html.
     */
 
-    $s = new EUVATFormSelectCountry('', 'options[]', $options[0]);
+    $s = new FormSelectCountry('', 'options[]', $options[0]);
 
     $s->setValue($options[0]);
 
@@ -171,7 +171,7 @@ function b_euvat_lookup_edit($options)
 
     $form = '<table>';
 
-    $form .= '<tr><td>' . _MB_EUVAT_BLOOK_COUNTRY . '</td><td>' . $fld . '</td></tr>';
+    $form .= '<tr><td>' . _MB_XBSVAT_BLOOK_COUNTRY . '</td><td>' . $fld . '</td></tr>';
 
     $form .= '</table>';
 

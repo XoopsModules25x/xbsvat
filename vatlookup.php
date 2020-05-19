@@ -59,25 +59,25 @@ require_once XOOPS_ROOT_PATH . '/header.php';
 /**
  * CDM Defines
  */
-require_once XOOPS_ROOT_PATH . '/modules/xbs_cdm/include/defines.php';
+require_once XOOPS_ROOT_PATH . '/modules/xbscdm/include/defines.php';
 /**
  * VAT functions
  */
-require_once XOOPS_ROOT_PATH . '/modules/xbs_vat/include/functions.php';
+require_once XOOPS_ROOT_PATH . '/modules/xbsvat/include/functions.php';
 
 // include the default block language file
-if (file_exists(XOOPS_ROOT_PATH . 'modules/xbs_vat/language/' . $xoopsConfig['language'] . '/blocks.php')) {
+if (file_exists(XOOPS_ROOT_PATH . 'modules/xbsvat/language/' . $xoopsConfig['language'] . '/blocks.php')) {
     /**
      * Block language definitions
      */
 
-    require_once XOOPS_ROOT_PATH . 'modules/xbs_vat/language/' . $xoopsConfig['language'] . '/blocks.php';
-} elseif (file_exists(XOOPS_ROOT_PATH . '/modules/xbs_vat/language/english/blocks.php')) {
+    require_once XOOPS_ROOT_PATH . 'modules/xbsvat/language/' . $xoopsConfig['language'] . '/blocks.php';
+} elseif (file_exists(XOOPS_ROOT_PATH . '/modules/xbsvat/language/english/blocks.php')) {
     /**
      * Default language definitions for block
      */
 
-    require_once XOOPS_ROOT_PATH . '/modules/xbs_vat/language/english/blocks.php';
+    require_once XOOPS_ROOT_PATH . '/modules/xbsvat/language/english/blocks.php';
 }
 /**
  * Session values
@@ -104,9 +104,9 @@ $_SESSION['euvat_blookup_cntry']  = $_GET['cntry'];
 $_SESSION['euvat_blookup_vatnum'] = $_GET['vatnum'];
 //and go back to the page we were on
 if ($ret) {
-    $_SESSION['euvat_blookup_msg'] = _MB_EUVAT_BLOOK_SUCCESS;
+    $_SESSION['euvat_blookup_msg'] = _MB_XBSVAT_BLOOK_SUCCESS;
 } else {
-    $_SESSION['euvat_blookup_msg'] = _MB_EUVAT_BLOOK_FAIL;
+    $_SESSION['euvat_blookup_msg'] = _MB_XBSVAT_BLOOK_FAIL;
 }
 //Redisplay page - 1st method is Xoops and slow
 //  Other methods are more direct but may not work in

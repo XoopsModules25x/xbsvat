@@ -1,5 +1,7 @@
 <?php declare(strict_types=1);
 
+namespace XoopsModules\Xbsvat;
+
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //
@@ -32,30 +34,19 @@
 // ------------------------------------------------------------------------- //
 /**
  * @package       EUVAT
- * @subpackage    EUVat
+ * @subpackage    EuVat
  * @author        Ashley Kitson http://xoobs.net
  * @copyright (c) 2004 Ashley Kitson, Great Britain
  */
-if (!defined('XOOPS_ROOT_PATH')) {
-    exit('Call to include EUVat.php failed as XOOPS_ROOT_PATH not defined');
-}
+
 
 /**
- * EUVat Base Class
- */
-require_once XOOPS_ROOT_PATH . '/modules/xbs_vat/class/class.vat.base.php';
-/**
- * CDM CodeHandler class
- */
-require_once XOOPS_ROOT_PATH . '/modules/xbs_cdm/class/CDMCode.php';
-
-/**
- * Object handler for EUVat
+ * Object handler for EuVat
  *
  * @package    EUVAT
- * @subpackage EUVat
+ * @subpackage EuVat
  */
-class Xbs_vatEUVatHandler extends Xbs_CdmCDMCodeHandler
+class EuVatHandler extends Xbs_CdmCDMCodeHandler
 {
     /**
      * Constructor
@@ -72,13 +63,13 @@ class Xbs_vatEUVatHandler extends Xbs_CdmCDMCodeHandler
     }
 
     /**
-     * Create a new EUVat object
+     * Create a new EuVat object
      *
      * @access private
      */
-    public function &_create()
+    public function _create()
     {
-        return new EUVat();
+        return new EuVat();
     }
     //end function _create
 } //end class CDMCodeHandler

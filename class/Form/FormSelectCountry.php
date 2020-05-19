@@ -1,5 +1,9 @@
 <?php declare(strict_types=1);
 
+namespace XoopsModules\Xbsvat\Form;
+
+use XoopsModules\Xbscdm;
+
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //
@@ -47,11 +51,7 @@ require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 /**
  * CDM Definitions
  */
-require_once XOOPS_ROOT_PATH . '/modules/xbs_cdm/include/defines.php';
-/**
- * CDM form objects.  SACC extends these
- */
-require_once CDM_PATH . '/class/class.cdm.form.php';
+require_once XOOPS_ROOT_PATH . '/modules/xbscdm/include/defines.php';
 
 /**
  * CDM functions
@@ -65,7 +65,7 @@ require_once CDM_PATH . '/class/class.cdm.form.php';
  * @subpackage Form_Handling
  * @version    1
  */
-class EUVATFormSelectCountry extends CDMFormSelect
+class FormSelectCountry extends Xbscdm\Form\FormSelect
 {
     /**
      * Constructor

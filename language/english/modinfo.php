@@ -19,16 +19,16 @@
 /**
  * The name of this module
  */
-define('_MI_EUVAT_NAME', 'EU VAT');
+define('_MI_XBSVAT_NAME', 'EU VAT');
 
 /**
  *  A brief description of this module
  */
-define('_MI_EUVAT_DESC', 'Provides a method for checking European Union Value Added Tax (VAT) numbers against the EU VIES database');
+define('_MI_XBSVAT_DESC', 'Provides a method for checking European Union Value Added Tax (VAT) numbers against the EU VIES database');
 
 /**#@+
  * Block naming and descriptions
  */
-define('_MI_EUVAT_BLOCK_CODELOOKUPNAME', 'VAT Number Lookup');
-define('_MI_EUVAT_BLOCK_CODELOOKUPDESC', 'Allows user to check a VAT NUmber for any EU member state');
+define('_MI_XBSVAT_BLOCK_CODELOOKUPNAME', 'VAT Number Lookup');
+define('_MI_XBSVAT_BLOCK_CODELOOKUPDESC', 'Allows user to check a VAT NUmber for any EU member state');
 /**#@-*/

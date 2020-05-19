@@ -1,5 +1,7 @@
 <?php declare(strict_types=1);
 
+namespace XoopsModules\Xbsvat;
+
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //
@@ -44,22 +46,22 @@
  * @subpackage    EUVATBase
  * @author        Ashley Kitson http://xoobs.net.
  * @copyright (c) 2005 Parts - Ashley Kitson, Great Britain.  Parts - Benjamin Boigienman, France
- * @tutorial      EUVAT/EUVat/EUVAT.pkg
+ * @tutorial      EUVAT/EuVat/EUVAT.pkg
  */
 
 /**
  * Base VAT handling objects are derived from Code Data Management base objects
  */
-require_once XOOPS_ROOT_PATH . '/modules/xbs_cdm/class/class.cdm.base.php';
+//require_once XOOPS_ROOT_PATH . '/modules/xbscdm/class/class.cdm.base.php';
 
 /**
  * VAT object
  *
  * @package    EUVAT
- * @subpackage EUVat
+ * @subpackage EuVat
  * @version    1
  */
-class EUVat extends CDMCode
+class EuVat extends CDMCode
 {
     /**
      * Check that the VAT number is in the correct format
@@ -199,4 +201,4 @@ class EUVat extends CDMCode
 
         return false;
     }
-}//end class EUVat
+}//end class EuVat

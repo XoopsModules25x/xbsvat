@@ -41,10 +41,6 @@
  * @copyright (c) 2006 Ashley Kitson, Great Britain
  */
 
-/**
- * VAT base class
- */
-require_once XOOPS_ROOT_PATH . '/modules/xbs_vat/class/class.vat.base.php';
 
 /**
  * Return an EUVAT object
@@ -55,7 +51,7 @@ require_once XOOPS_ROOT_PATH . '/modules/xbs_vat/class/class.vat.base.php';
  */
 function EUVATGetCodeObj($cntryCd, $lang = CDM_DEF_LANG)
 {
-    $vatHandler = xoops_getModuleHandler('EUVat', 'xbs_vat');
+    $vatHandler = \XoopsModules\Xbsvat\Helper::getInstance()->getHandler('EuVat');
 
     $id = $vatHandler->getKey($cntryCd, 'EUVAT', $lang);
 

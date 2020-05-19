@@ -95,7 +95,7 @@ function xoops_module_install_xbs_vat(&$module)
 
     global $xoopsDB;
 
-    $sql = 'SELECT 1 FROM ' . $xoopsDB->prefix('modules') . " WHERE dirname = 'xbs_cdm' AND isactive = 1";
+    $sql = 'SELECT 1 FROM ' . $xoopsDB->prefix('modules') . " WHERE dirname = 'xbscdm' AND isactive = 1";
 
     return $result = $xoopsDB->queryF($sql);
 }//end function
