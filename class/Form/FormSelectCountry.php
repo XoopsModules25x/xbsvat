@@ -1,8 +1,13 @@
-<?php
+<?php declare(strict_types=1);
+
+namespace XoopsModules\Xbsvat\Form;
+
+use XoopsModules\Xbscdm;
+
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //
-//                       <http://www.xoops.org/>                             //
+//                       <https://xoops.org>                             //
 //  ------------------------------------------------------------------------ //
 //  This program is free software; you can redistribute it and/or modify     //
 //  it under the terms of the GNU General Public License as published by     //
@@ -25,60 +30,54 @@
 //  ------------------------------------------------------------------------ //
 // Author:    Ashley Kitson                                                  //
 // Copyright: (c) 2004, Ashley Kitson                                        //
-// URL:       http://xoobs.net			                                     //
-// Project:   The XOOPS Project (http://www.xoops.org/)                      //
+// URL:       http://xoobs.net                                               //
+// Project:   The XOOPS Project (https://xoops.org/)                      //
 // Module:    EU VAT (EUVAT)                                                 //
 // ------------------------------------------------------------------------- //
 
-
-/** 
+/**
  * Classes used by EU VAT to present form data
- * 
- * @package EUVAT
- * @subpackage Form_Handling
- * @author Ashley Kitson http://xoobs.net
+ *
+ * @package       EUVAT
+ * @subpackage    Form_Handling
+ * @author        Ashley Kitson http://xoobs.net
  * @copyright (c) 2004 Ashley Kitson, Great Britain
-*/
+ */
 
 /**
-* Xoops form objects
-*/
-require_once XOOPS_ROOT_PATH."/class/xoopsformloader.php";
+ * Xoops form objects
+ */
+require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 /**
  * CDM Definitions
  */
-require_once(XOOPS_ROOT_PATH."/modules/xbs_cdm/include/defines.php");
-/**
-* CDM form objects.  SACC extends these
-*/
-require_once CDM_PATH."/class/class.cdm.form.php";
+require_once XOOPS_ROOT_PATH . '/modules/xbscdm/include/defines.php';
 
 /**
-* CDM functions
-*/
+ * CDM functions
+ */
 //require_once CDM_PATH."/include/functions.php";
 
 /**
-* Create a VAT Country Code selector 
-*
-* @package EUVAT
-* @subpackage Form_Handling
-* @version 1
-*/
-class EUVATFormSelectCountry extends CDMFormSelect {
-/**
-* Constructor
-*
-* @param	string	$caption	Caption
-* @param	string	$name       "name" attribute
-* @param	mixed	$value	    Pre-selected value (or array of them).
-* @param	int		$size	    Number of rows. "1" makes a drop-down-list
-* @param   string  $lang      The language set for the returned codes, defaults to CDM_DEF_LANG (normally EN)
-*/
-  function EUVATFormSelectCountry($caption, $name, $value=null, $size=1, $lang=CDM_DEF_LANG) {
-    $this->CDMFormSelect('EUVAT', $caption, $name, $value, $size, $lang, 'cd_desc');
-  }
+ * Create a VAT Country Code selector
+ *
+ * @package    EUVAT
+ * @subpackage Form_Handling
+ * @version    1
+ */
+class FormSelectCountry extends Xbscdm\Form\FormSelect
+{
+    /**
+     * Constructor
+     *
+     * @param string $caption Caption
+     * @param string $name    "name" attribute
+     * @param mixed  $value   Pre-selected value (or array of them).
+     * @param int    $size    Number of rows. "1" makes a drop-down-list
+     * @param string $lang    The language set for the returned codes, defaults to CDM_DEF_LANG (normally EN)
+     */
+    public function __construct($caption, $name, $value = null, $size = 1, $lang = CDM_DEF_LANG)
+    {
+        parent::__construct('EUVAT', $caption, $name, $value, $size, $lang, 'cd_desc');
+    }
 }
-
-
-?>
