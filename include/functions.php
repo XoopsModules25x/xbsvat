@@ -41,6 +41,7 @@
  * @copyright (c) 2006 Ashley Kitson, Great Britain
  */
 
+use XoopsModules\Xbsvat\Helper;
 
 /**
  * Return an EUVAT object
@@ -51,7 +52,7 @@
  */
 function EUVATGetCodeObj($cntryCd, $lang = CDM_DEF_LANG)
 {
-    $vatHandler = \XoopsModules\Xbsvat\Helper::getInstance()->getHandler('EuVat');
+    $vatHandler = Helper::getInstance()->getHandler('EuVat');
 
     $id = $vatHandler->getKey($cntryCd, 'EUVAT', $lang);
 

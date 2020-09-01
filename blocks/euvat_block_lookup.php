@@ -41,6 +41,10 @@
  * @access     private
  */
 
+use XoopsModules\Xbsvat\{
+    Form\FormSelectCountry
+};
+
 //avoid declaring the functions repeatedly
 //if(defined('EUVAT_BLOOKUP_DEFINED')) return;
 /**
@@ -59,7 +63,7 @@ require_once XOOPS_ROOT_PATH . '/modules/xbscdm/include/defines.php';
 /**
  * EU VAT form elements
  */
-require_once XOOPS_ROOT_PATH . '/modules/xbsvat/class/class.vat.form.php';
+//require_once XOOPS_ROOT_PATH . '/modules/xbsvat/class/class.vat.form.php';
 
 /**
  * Function: Create display data for block

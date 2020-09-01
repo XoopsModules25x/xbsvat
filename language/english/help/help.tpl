@@ -3,7 +3,20 @@
 
     <h4 class="odd">DESCRIPTION</h4> <br>
 
-    <p class="even">This module is ....<br> <br>
+    <p class="even">The EUVAT module does not provide any main page, menu or admin menu. It provides one block for allowing a user to check a VAT number on the VIES database. This is configured in the normal way via the Xoops block administration facilities.
+        <br> <br>
+        The block is included as a facility for your users and also to demonstrate how to use EUVAT in your own module. Check out the euvat_block_lookup.php and vatlookup.php scripts to be found in the xbs_vat/blocks directory.<br> <br>
+
+        <{*        <br> <br>*}>
+
+<{*        More Help information: <a href="<{$xoops_url}>/modules/<{$smarty.const._MI_XBSVAT_DIRNAME}>/admin/help.php" target="_blank"> XBS Docs</a>*}>
+
+    </p>
+
+    <h4 class="odd"><span style="color: #FF0000; ">NEW: </span>CLASS &amp; FUNCTIONS API</h4><br>
+    <p class="even">
+        For <strong> Class and Function definitions </strong>  see: <a href="<{$xoops_url}>/modules/<{$smarty.const._MI_XBSVAT_DIRNAME}>/docu/index.html" TARGET="_blank">CDM VAT Class Documentation </a>
+        <br><br>
     </p>
 
     <h4 class="odd">INSTALL/UNINSTALL</h4>

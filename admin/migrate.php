@@ -31,6 +31,7 @@
 
 use Xmf\Request;
 use XoopsModules\Xbsvat;
+use XoopsModules\Xbsvat\Common\Migrate;
 
 require_once __DIR__ . '/admin_header.php';
 xoops_cp_header();
@@ -57,7 +58,7 @@ EOF;
 $configurator = new Xbsvat\Common\Configurator();
 
 /** @var \XoopsModules\Xbsvat\Common\Migrate $migrator */
-$migrator = new \XoopsModules\Xbsvat\Common\Migrate($configurator);
+$migrator = new Migrate($configurator);
 
 $op = Request::getCmd('op', 'default');
 $opShow = Request::getCmd('show', null, 'POST');

@@ -32,3 +32,22 @@ define('_MI_XBSVAT_DESC', 'Provides a method for checking European Union Value A
 define('_MI_XBSVAT_BLOCK_CODELOOKUPNAME', 'VAT Number Lookup');
 define('_MI_XBSVAT_BLOCK_CODELOOKUPDESC', 'Allows user to check a VAT NUmber for any EU member state');
 /**#@-*/
+
+//Menu
+define('_MI_XBSVAT_MENU_HOME', 'Home');
+define('_MI_XBSVAT_MENU_01', 'Admin');
+define('_MI_XBSVAT_MENU_ABOUT', 'About');
+define('_MI_XBSVAT_MENU_DOCU', 'Docu');
+
+//Help
+define('_MI_XBSVAT_DIRNAME', basename(dirname(__DIR__, 2)));
+define('_MI_XBSVAT_HELP_HEADER', __DIR__ . '/help/helpheader.tpl');
+define('_MI_XBSVAT_BACK_2_ADMIN', 'Back to Administration of ');
+define('_MI_XBSVAT_OVERVIEW', 'Overview');
+
+//define('_MI_XBSVAT_HELP_DIR', __DIR__);
+
+//help multi-page
+define('_MI_XBSVAT_DISCLAIMER', 'Disclaimer');
+define('_MI_XBSVAT_LICENSE', 'License');
+define('_MI_XBSVAT_SUPPORT', 'Support');

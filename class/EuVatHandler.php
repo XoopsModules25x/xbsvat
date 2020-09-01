@@ -39,6 +39,7 @@ namespace XoopsModules\Xbsvat;
  * @copyright (c) 2004 Ashley Kitson, Great Britain
  */
 
+use XoopsModules\Xbscdm;
 
 /**
  * Object handler for EuVat
@@ -46,7 +47,7 @@ namespace XoopsModules\Xbsvat;
  * @package    EUVAT
  * @subpackage EuVat
  */
-class EuVatHandler extends Xbs_CdmCDMCodeHandler
+class EuVatHandler extends Xbscdm\CodeHandler
 {
     /**
      * Constructor
@@ -57,7 +58,7 @@ class EuVatHandler extends Xbs_CdmCDMCodeHandler
     {
         parent::__construct($db); //call ancestor constructor
 
-        $this->classname = 'euvat';
+        $this->classname = EuVat::class;
 
         $this->ins_tagname = 'uevat_ins_code';
     }

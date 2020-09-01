@@ -21,9 +21,11 @@ namespace XoopsModules\Xbsvat;
  * @author       Mamba <mambax7@gmail.com>
  */
 
-use XoopsModules\Xbsvat;
-use XoopsModules\Xbsvat\Common;
-use XoopsModules\Xbsvat\Constants;
+use XoopsModules\Xbsvat\{
+    Helper,
+    Common
+};
+//use XoopsModules\Xbsvat\Constants;
 
 /**
  * Class Utility
@@ -31,5 +33,42 @@ use XoopsModules\Xbsvat\Constants;
 class Utility extends Common\SysUtility
 {
     //--------------- Custom module methods -----------------------------
+
+    /**
+     * Return an EUVAT object
+     *
+     * @param string $cntryCd EU VAT Country code
+     * @param string $lang    Language set for code set
+     * @return void (CDMCode) object
+     */
+    public static function getCodeObj($cntryCd, $lang = CDM_DEF_LANG)
+    {
+        $vatHandler = Helper::getInstance()->getHandler('EuVat');
+
+        $id = $vatHandler->getKey($cntryCd, 'EUVAT', $lang);
+
+        return $vatHandler->get($id);
+    }
+
+    /**
+     * Check a VAT number against VIES database
+     *
+     * @param        $cntryCd
+     * @param string $vnum VAT Number (no country code prefix)
+     * @param string $lang Language set to use [optional]
+     *
+     * @return bool True if Code is valid else false
+     * @internal param string $CntryCd VAT Country Code
+     */
+    public static function checkNumber($cntryCd, $vnum, $lang = CDM_DEF_LANG)
+    {
+        $vat = self::getCodeObj($cntryCd);
+
+        if ($vat) {
+            return $vat->check($cntryCd . $vnum);
+        }
+
+        return false;
+    }
 
 }

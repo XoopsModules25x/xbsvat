@@ -46,11 +46,16 @@
  */
 
 use Xmf\Request;
+use XoopsModules\Xbsvat\{
+    Helper,
+    Utility
+};
+/** @var Helper $helper */
 
 /**
  * Xoops mainfile
  */
-require_once dirname(dirname(__DIR__)) . '/mainfile.php'; //Xoops 2.2
+require_once dirname(__DIR__, 2) . '/mainfile.php'; //Xoops 2.2
 //include_once('../../../mainfile.php'); //Xoops 2.0 if this script is in blocks directory
 /**
  * Xoops header
@@ -60,25 +65,10 @@ require_once XOOPS_ROOT_PATH . '/header.php';
  * CDM Defines
  */
 require_once XOOPS_ROOT_PATH . '/modules/xbscdm/include/defines.php';
-/**
- * VAT functions
- */
-require_once XOOPS_ROOT_PATH . '/modules/xbsvat/include/functions.php';
 
-// include the default block language file
-if (file_exists(XOOPS_ROOT_PATH . 'modules/xbsvat/language/' . $xoopsConfig['language'] . '/blocks.php')) {
-    /**
-     * Block language definitions
-     */
+$helper = Helper::getInstance();
+$helper->loadLanguage('blocks');
 
-    require_once XOOPS_ROOT_PATH . 'modules/xbsvat/language/' . $xoopsConfig['language'] . '/blocks.php';
-} elseif (file_exists(XOOPS_ROOT_PATH . '/modules/xbsvat/language/english/blocks.php')) {
-    /**
-     * Default language definitions for block
-     */
-
-    require_once XOOPS_ROOT_PATH . '/modules/xbsvat/language/english/blocks.php';
-}
 /**
  * Session values
  */
@@ -86,7 +76,7 @@ global $_SESSION;
 /**
  * Form get variables
  */
-global $_GET;
+//global $_GET;
 /**
  * Server variables
  */
@@ -96,12 +86,12 @@ global $_SERVER;
 $ret = false;
 if (isset($_GET['cntry'])) {
     if (isset($_GET['vatnum'])) {
-        $ret = EUVATCheckNumber($_GET['cntry'], $_GET['vatnum']);
+        $ret = Utility::checkNumber(Request::getString('cntry', '', 'GET'), Request::getInt('vatnum', 0, 'GET'));
     }
 }
 //save the data to display when form next shows
-$_SESSION['euvat_blookup_cntry']  = $_GET['cntry'];
-$_SESSION['euvat_blookup_vatnum'] = $_GET['vatnum'];
+$_SESSION['euvat_blookup_cntry']  = Request::getString('cntry', '', 'GET');
+$_SESSION['euvat_blookup_vatnum'] = Request::getInt('vatnum', 0, 'GET');
 //and go back to the page we were on
 if ($ret) {
     $_SESSION['euvat_blookup_msg'] = _MB_XBSVAT_BLOOK_SUCCESS;

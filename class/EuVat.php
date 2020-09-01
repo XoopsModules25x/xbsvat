@@ -54,6 +54,8 @@ namespace XoopsModules\Xbsvat;
  */
 //require_once XOOPS_ROOT_PATH . '/modules/xbscdm/class/class.cdm.base.php';
 
+use XoopsModules\Xbscdm;
+
 /**
  * VAT object
  *
@@ -61,7 +63,7 @@ namespace XoopsModules\Xbsvat;
  * @subpackage EuVat
  * @version    1
  */
-class EuVat extends CDMCode
+class EuVat extends Xbscdm\Code
 {
     /**
      * Check that the VAT number is in the correct format
@@ -76,7 +78,7 @@ class EuVat extends CDMCode
 
         //the cd field of this code
 
-        if (ereg('^([A-Z]{2})', $vatno, $regs) && ($regs[1] == $this->getVar('cd'))) {
+        if (preg_match('/^([A-Z]{2})/', $vatno, $regs) && ($regs[1] == $this->getVar('cd'))) {
             //strip out first two characters
 
             $vatno = mb_substr($vatno, 2);
@@ -88,7 +90,7 @@ class EuVat extends CDMCode
             $vatmask = explode('~', $vmask);
 
             foreach ($vatmask as $mask) {
-                if (ereg($mask, $vatno)) {
+                if (preg_match('/$mask/', $vatno)) {
                     return true;
                 }
             }

@@ -18,26 +18,30 @@
  * @author       XOOPS Development Team
  * @version      $Id $
  */
+
+use Xmf\Module\Admin;
+use XoopsModules\Xbsvat\Helper;
+
 include dirname(__DIR__) . '/preloads/autoloader.php';
 
-require  dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
+require dirname(__DIR__, 3) . '/include/cp_header.php';
 require $GLOBALS['xoops']->path('www/class/xoopsformloader.php');
 require  dirname(__DIR__) . '/include/common.php';
 
 $moduleDirName = basename(dirname(__DIR__));
 
 /** @var \XoopsModules\Xbsvat\Helper $helper */
-$helper = \XoopsModules\Xbsvat\Helper::getInstance();
+$helper = Helper::getInstance();
 
 /** @var \Xmf\Module\Admin $adminObject */
-$adminObject = \Xmf\Module\Admin::getInstance();
+$adminObject = Admin::getInstance();
 
 // Load language files
 $helper->loadLanguage('admin');
 $helper->loadLanguage('modinfo');
 $helper->loadLanguage('common');
 
-xoops_cp_header();
+//xoops_cp_header();
 
 /**
  * Include the CDM system constant defines as SACC relies on CDM
@@ -51,10 +55,12 @@ require_once XOOPS_ROOT_PATH . '/modules/xbscdm/include/defines.php';
 /**
  * CDM functions
  */
-require_once CDM_PATH . '/include/functions.php';
+//require_once CDM_PATH . '/include/functions.php';
 /**
  * SACC functions
  */
-require_once dirname(__DIR__) . '/include/functions.php';
+//require_once dirname(__DIR__) . '/include/functions.php';
 
 //require_once __DIR__ . '/functions.php';
+
+

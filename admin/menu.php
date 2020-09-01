@@ -16,34 +16,45 @@
  * @package
  * @since
  * @author       XOOPS Development Team
- * @version      $Id $
  */
+
+use Xmf\Module\Admin;
+use XoopsModules\Xbsvat\{
+    Helper
+};
+/** @var Admin $adminObject */
+/** @var Helper $helper */
+
 
 include dirname(__DIR__) . '/preloads/autoloader.php';
 
 $moduleDirName = basename(dirname(__DIR__));
 $moduleDirNameUpper = mb_strtoupper($moduleDirName);
-/** @var \XoopsModules\Xbsvat\Helper $helper */
-$helper = \XoopsModules\Xbsvat\Helper::getInstance();
+$helper = Helper::getInstance();
 $helper->loadLanguage('common');
 $helper->loadLanguage('feedback');
 
-$pathIcon32 = \Xmf\Module\Admin::menuIconPath('');
+$pathIcon32 = Admin::menuIconPath('');
 if (is_object($helper->getModule())) {
     $pathModIcon32 = $helper->url($helper->getModule()->getInfo('modicons32'));
 }
 
-$adminmenu              = [];
-$i                      = 0;
-$adminmenu[$i]['title'] = _AM_MODULEADMIN_HOME;
-$adminmenu[$i]['link']  = 'admin/index.php';
-$adminmenu[$i]['icon']  = $pathIcon32 . '/home.png';
-$i++;
-$adminmenu[$i]['title'] = _MI_OLEDRION_ADMENU10;
-$adminmenu[$i]['link']  = 'admin/main.php';
-$adminmenu[$i]['icon']  = $pathIcon32 . '/manage.png';
+$adminmenu[] = [
+    'title' => _MI_XBSVAT_MENU_HOME,
+    'link'  => 'admin/index.php',
+    'icon'  => $pathIcon32 . '/home.png',
+];
 
-$i++;
-$adminmenu[$i]['title'] = _AM_MODULEADMIN_ABOUT;
-$adminmenu[$i]['link']  = 'admin/about.php';
-$adminmenu[$i]['icon']  = $pathIcon32 . '/about.png';
+$adminmenu[] = [
+    'title' => _MI_XBSVAT_MENU_ABOUT,
+    'link'  => 'admin/about.php',
+    'icon'  => $pathIcon32 . '/about.png',
+];
+
+//$adminmenu[] = [
+//    'title' => _MI_XBSVAT_MENU_DOCU,
+//    'link'  => 'admin/help.php',
+//    'icon'  => $pathIcon32 . '/faq.png',
+//];
+
+
