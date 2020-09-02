@@ -1,64 +1,68 @@
 <?php declare(strict_types=1);
 
-//  ------------------------------------------------------------------------ //
-//                XOOPS - PHP Content Management System                      //
-//                    Copyright (c) 2000 XOOPS.org                           //
-//                       <https://xoops.org>                             //
-//  ------------------------------------------------------------------------ //
-//  This program is free software; you can redistribute it and/or modify     //
-//  it under the terms of the GNU General Public License as published by     //
-//  the Free Software Foundation; either version 2 of the License, or        //
-//  (at your option) any later version.                                      //
-//                                                                           //
-//  You may not change or alter any portion of this comment or credits       //
-//  of supporting developers from this source code or any supporting         //
-//  source code which is considered copyrighted (c) material of the          //
-//  original comment or credit authors.                                      //
-//                                                                           //
-//  This program is distributed in the hope that it will be useful,          //
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of           //
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            //
-//  GNU General Public License for more details.                             //
-//                                                                           //
-//  You should have received a copy of the GNU General Public License        //
-//  along with this program; if not, write to the Free Software              //
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
-//  ------------------------------------------------------------------------ //
-// Author:    Ashley Kitson                                                  //
-// Copyright: (c) 2004, Ashley Kitson                                        //
-// URL:       http://xoobs.net                                               //
-// Project:   The XOOPS Project (https://xoops.org/)                      //
-// Module:    EU VAT (EUVAT)                                                 //
-// ------------------------------------------------------------------------- //
+/*
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
+
 /**
  * Module installation parameters
  *
  * This script conforms to the Xoops standard for xoops_version.php
  *
- * @author     Ashley Kitson http://xoobs.net
- * @copyright  2005 Ashley Kitson, UK
- * @package    EUVAT
- * @subpackage Installation
- * @access     private
- * @version    1
+ * @copyright (c) 2004, Ashley Kitson
+ * @copyright     XOOPS Project https://xoops.org/
+ * @license       GNU GPL 2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
+ * @author        Ashley Kitson http://akitson.bbcb.co.uk
+ * @author        XOOPS Development Team
+ * @package       EUVAT
+ * @subpackage    Installation
+ * @access        private
+ * @version       1
  */
 
 $moduleDirName      = basename(__DIR__);
 $moduleDirNameUpper = mb_strtoupper($moduleDirName);
 
-$modversion['name']        = _MI_XBSVAT_NAME;
-$modversion['version']     = 1.0;
-$modversion['description'] = _MI_XBSVAT_DESC;
-$modversion['credits']     = 'Ashley Kitson<br>( http://xoobs.net/ ), Benjamin Boigienman, France';
-$modversion['author']      = 'Ashley Kitson';
+$modversion['version']             = 2.01;
+$modversion['module_status']       = 'Beta 1';
+$modversion['release_date']        = '2020/08/30';
+$modversion['name']                = _MI_XBSVAT_NAME;
+$modversion['description']         = _MI_XBSVAT_DESC;
+$modversion['credits']             = 'Ashley Kitson<br>( http://xoobs.net/ ), Benjamin Boigienman, France';
+$modversion['author']              = 'Ashley Kitson';
+$modversion['license']             = 'GPL see LICENSE';
+$modversion['official']            = 0;
+$modversion['dirname']             = $moduleDirName;
+$modversion['modicons16']          = 'assets/images/icons/16';
+$modversion['modicons32']          = 'assets/images/icons/32';
+$modversion['image']               = 'assets/images/logoModule.png';
+$modversion['onUninstall']         = 'install_funcs.php';
+$modversion['onInstall']           = 'install_funcs.php';
+$modversion['onUpdate']            = 'install_funcs.php';
+$modversion['module_website_url']  = 'https://xoops.org';
+$modversion['module_website_name'] = 'XOOPS';
+$modversion['min_php']             = '7.1';
+$modversion['min_xoops']           = '2.5.10';
+$modversion['min_admin']           = '1.2';
+$modversion['min_db']              = ['mysql' => '5.5'];
+$modversion['adminindex']          = 'admin/index.php';
+$modversion['adminmenu']           = 'admin/menu.php';
+
+// ------------------- Help files ------------------- //
 //$modversion['help'] = "euvathelp.html";
-$modversion['license']     = 'GPL see LICENSE';
-$modversion['official']    = 0;
-$modversion['image']       = 'assets/images/logoModule.png';
-$modversion['dirname']     = $moduleDirName;
-$modversion['onUninstall'] = 'install_funcs.php';
-$modversion['onInstall']   = 'install_funcs.php';
-$modversion['onUpdate']    = 'install_funcs.php';
+$modversion['help']        = 'page=help';
+$modversion['helpsection'] = [
+    ['name' => _MI_XBSVAT_OVERVIEW, 'link' => 'page=help'],
+    ['name' => _MI_XBSVAT_DISCLAIMER, 'link' => 'page=disclaimer'],
+    ['name' => _MI_XBSVAT_LICENSE, 'link' => 'page=license'],
+    ['name' => _MI_XBSVAT_SUPPORT, 'link' => 'page=support'],
+];
 
 // Sql file (must contain sql generated by phpMyAdmin or phpPgAdmin)
 // All tables should not have any prefix!
@@ -79,7 +83,7 @@ $modversion['hasMain'] = 0;
 //$modversion['templates'][1]['description'] = '';
 
 // Admin menu things
-$modversion['hasAdmin'] = 1;
+$modversion['hasAdmin']    = 1;
 $modversion['system_menu'] = 1;
 
 //Search things
