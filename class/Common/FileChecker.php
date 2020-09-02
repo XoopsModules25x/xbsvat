@@ -39,10 +39,10 @@ class FileChecker
     /**
      * @param string      $file_path
      * @param string|null $original_file_path
-     * @param string      $redirectFile
+     * @param string|null $redirectFile
      * @return bool|string
      */
-    public static function getFileStatus($file_path, $original_file_path = null, $redirectFile)
+    public static function getFileStatus($file_path, $original_file_path = null, $redirectFile = null)
     {
         global $pathIcon16;
 
@@ -63,19 +63,19 @@ class FileChecker
                 $path_status .= "$file_path (" . constant('CO_' . $moduleDirNameUpper . '_' . 'FC_NOTAVAILABLE') . ') ';
             }
         } elseif (self::compareFiles($file_path, $original_file_path)) {
-                $path_status = "<img src='$pathIcon16/1.png' >";
-                $path_status .= "$file_path (" . constant('CO_' . $moduleDirNameUpper . '_' . 'FC_AVAILABLE') . ') ';
-            } else {
-                $path_status = "<img src='$pathIcon16/0.png' >";
-                $path_status .= "$file_path (" . constant('CO_' . $moduleDirNameUpper . '_' . 'FC_NOTAVAILABLE') . ') ';
-                $path_status .= "<form action='" . $_SERVER['SCRIPT_NAME'] . "' method='post'>";
-                $path_status .= "<input type='hidden' name='op' value='copyfile'>";
-                $path_status .= "<input type='hidden' name='file_path' value='$file_path'>";
-                $path_status .= "<input type='hidden' name='original_file_path' value='$original_file_path'>";
-                $path_status .= "<input type='hidden' name='redirect' value='$redirectFile'>";
-                $path_status .= "<button class='submit' onClick='this.form.submit();'>" . constant('CO_' . $moduleDirNameUpper . '_' . 'FC_CREATETHEFILE') . '</button>';
-                $path_status .= '</form>';
-            }
+            $path_status = "<img src='$pathIcon16/1.png' >";
+            $path_status .= "$file_path (" . constant('CO_' . $moduleDirNameUpper . '_' . 'FC_AVAILABLE') . ') ';
+        } else {
+            $path_status = "<img src='$pathIcon16/0.png' >";
+            $path_status .= "$file_path (" . constant('CO_' . $moduleDirNameUpper . '_' . 'FC_NOTAVAILABLE') . ') ';
+            $path_status .= "<form action='" . $_SERVER['SCRIPT_NAME'] . "' method='post'>";
+            $path_status .= "<input type='hidden' name='op' value='copyfile'>";
+            $path_status .= "<input type='hidden' name='file_path' value='$file_path'>";
+            $path_status .= "<input type='hidden' name='original_file_path' value='$original_file_path'>";
+            $path_status .= "<input type='hidden' name='redirect' value='$redirectFile'>";
+            $path_status .= "<button class='submit' onClick='this.form.submit();'>" . constant('CO_' . $moduleDirNameUpper . '_' . 'FC_CREATETHEFILE') . '</button>';
+            $path_status .= '</form>';
+        }
 
         return $path_status;
     }

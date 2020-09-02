@@ -14,6 +14,7 @@ namespace XoopsModules\Xbsvat;
  WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
+
 /**
  *
  * @license      https://www.fsf.org/copyleft/gpl.html GNU public license
@@ -21,10 +22,10 @@ namespace XoopsModules\Xbsvat;
  * @author       Mamba <mambax7@gmail.com>
  */
 
-use XoopsModules\Xbsvat\{
-    Helper,
+use XoopsModules\Xbsvat\{Helper,
     Common
 };
+
 //use XoopsModules\Xbsvat\Constants;
 
 /**
@@ -33,7 +34,6 @@ use XoopsModules\Xbsvat\{
 class Utility extends Common\SysUtility
 {
     //--------------- Custom module methods -----------------------------
-
     /**
      * Return an EUVAT object
      *
@@ -70,5 +70,4 @@ class Utility extends Common\SysUtility
 
         return false;
     }
-
 }

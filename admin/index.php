@@ -16,7 +16,6 @@
  * @package
  * @since
  * @author       XOOPS Development Team
- * @version      $Id $
  */
 
 use Xmf\Module\Admin;
@@ -37,8 +36,6 @@ $configurator = new Common\Configurator();
 //}
 
 //-------------------------------------
-
-
 
 $adminObject->displayNavigation(basename(__FILE__));
 

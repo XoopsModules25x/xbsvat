@@ -19,18 +19,17 @@
  */
 
 use Xmf\Module\Admin;
-use XoopsModules\Xbsvat\{
-    Helper
+use XoopsModules\Xbsvat\{Helper
 };
+
 /** @var Admin $adminObject */
 /** @var Helper $helper */
 
-
 include dirname(__DIR__) . '/preloads/autoloader.php';
 
-$moduleDirName = basename(dirname(__DIR__));
+$moduleDirName      = basename(dirname(__DIR__));
 $moduleDirNameUpper = mb_strtoupper($moduleDirName);
-$helper = Helper::getInstance();
+$helper             = Helper::getInstance();
 $helper->loadLanguage('common');
 $helper->loadLanguage('feedback');
 
